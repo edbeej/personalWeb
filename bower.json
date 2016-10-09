@@ -1,0 +1,12 @@
+{
+  "name": "my-site",
+  "description": "About Edwin Bejarano",
+  "main": "index.html",
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#^1.0.13",
+    "app-layout": "PolymerElements/app-layout#^0.10.4"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  }
+}

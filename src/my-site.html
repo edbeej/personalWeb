@@ -1,0 +1,106 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+
+<dom-module id="my-site">
+  <template>
+    <style>
+      :host {
+        --app-primary-color: #00ACC1;
+        --app-secondary-color: black;
+      }
+
+      header {
+        background-color: #00ACC1;
+        height: 200px;
+      }
+
+    app-toolbar {
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #1a237e;
+      height: 134px;
+    }
+
+    .nav {
+      height: 64px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #00ACC1;
+    }
+
+    .nav li {
+      display: inline-block;
+      list-style: none;
+    }
+
+    .nav a {
+      display: inline-block;
+      font-weight: 12px;
+      line-height: 64px;
+      text-decoration: none;
+      color: black;
+      font-weight: 300;
+      margin: 0 10px;
+    }
+
+    .nav a:hover {
+      color: #444;
+      border-bottom: 1px solid #999;
+    }
+    [threshold-triggered] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    </style>
+  <header>
+    <app-toolbar>
+      <div main-title>EDWIN BEJARANO</div>
+    </app-toolbar>
+    <app-box threshold="136">
+      <ul role="navigation" class="nav">
+        <li><a href="#speed">Home</a></li>
+        <li><a href="#modern">About</a></li>
+        <li><a href="#standard">Projects</a></li>
+        <li><a href="#create">Contact</a></li>
+      </ul>
+    </app-box>
+  </header>
+
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+  dafdsafasdf<BR><BR><BR>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'my-site',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'my-site',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
