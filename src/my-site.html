@@ -1,17 +1,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 
+<link rel="import" href="my-home.html">
+<link rel="import" href="my-about.html">
+<link rel="import" href="my-projects.html">
+<link rel="import" href="my-contact.html">
 <dom-module id="my-site">
   <template>
     <style>
       :host {
-        --app-primary-color: #00ACC1;
+        --app-primary-color: #2196F3;
         --app-secondary-color: black;
       }
 
       header {
-        background-color: #00ACC1;
-        height: 200px;
+        background-color: #2196F3;
+        height: 244px;
       }
 
     app-toolbar {
@@ -20,15 +28,19 @@
       letter-spacing: 2px;
       text-align: center;
       color: #1a237e;
-      height: 134px;
+      height: 192px;
+    }
+
+    app-box {
+      text-align:center;
     }
 
     .nav {
-      height: 64px;
-      margin: 0;
+      height: 52px;
+      margin: auto;
       padding: 0;
       text-align: center;
-      background-color: #00ACC1;
+      background-color: rgba(33, 150, 243, 0.8);
     }
 
     .nav li {
@@ -39,9 +51,9 @@
     .nav a {
       display: inline-block;
       font-weight: 12px;
-      line-height: 64px;
+      line-height: 52px;
       text-decoration: none;
-      color: black;
+      color: white;
       font-weight: 300;
       margin: 0 10px;
     }
@@ -50,6 +62,7 @@
       color: #444;
       border-bottom: 1px solid #999;
     }
+
     [threshold-triggered] {
       position: fixed;
       top: 0;
@@ -59,33 +72,42 @@
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       backdrop-filter: saturate(180%) blur(20px);
     }
+
     </style>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
   <header>
     <app-toolbar>
       <div main-title>EDWIN BEJARANO</div>
     </app-toolbar>
-    <app-box threshold="136">
+    <app-box threshold="192">
       <ul role="navigation" class="nav">
-        <li><a href="#speed">Home</a></li>
-        <li><a href="#modern">About</a></li>
-        <li><a href="#standard">Projects</a></li>
-        <li><a href="#create">Contact</a></li>
+      <iron-selector selected="[[page]]" attr-for-selected="name"  role="navigation">
+          <a name="home" href="/home">Home</a>
+          <a name="about" href="/about">About</a>
+          <a name="projects" href="/projects">Projects</a>
+          <a name="contact" href="/contact">Contact</a>
+      </iron-selector>
       </ul>
     </app-box>
   </header>
+  <div style = "height:100%;max-width:800px; margin:auto;background-color:white;padding:15px;">
+  <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            role="main">
+          <my-home name="home"></my-home>
+          <my-about name="about"></my-about>
+          <my-projects name="projects"></my-projects>
+          <my-contact name="contact"></my-contact>
+  </iron-pages>
+</div>
 
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
-  dafdsafasdf<BR><BR><BR>
 
   </template>
 
@@ -99,8 +121,28 @@
           type: String,
           value: 'my-site',
         },
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged'
+        }
+      },
+      observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+
+      _routePageChanged: function(page) {
+        this.page = page || 'home';
       },
 
+      _pageChanged: function(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
+        this.importHref(resolvedPageUrl, null, this._showPage404, true);
+      },
+      _showPage404: function() {
+        this.page = '404';
+      }
     });
   </script>
 </dom-module>
