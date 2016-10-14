@@ -39,6 +39,12 @@
     "commit": "c97dd0f01593b4cfd9ef7bba7dfe004f8b42c1c0"
   },
   "_source": "git://github.com/PolymerElements/app-route.git",
+<<<<<<< HEAD
   "_target": "*",
   "_originalSource": "PolymerElements/app-route"
+=======
+  "_target": "^0.9.2",
+  "_originalSource": "PolymerElements/app-route",
+  "_direct": true
+>>>>>>> eb6791a04b91f18a3c343cf04b0b87c82ae63347
 }

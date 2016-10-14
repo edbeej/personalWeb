@@ -27,7 +27,7 @@
       font-weight: 400;
       letter-spacing: 2px;
       text-align: center;
-      color: #1a237e;
+      color: #ffffff;
       height: 192px;
     }
 
@@ -73,6 +73,13 @@
       backdrop-filter: saturate(180%) blur(20px);
     }
 
+    iron-pages {
+      max-width:1000px;
+      margin:auto;
+      background-color:white;
+      box-shadow: 0px 0px 15px -2px;
+    }
+
     </style>
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -83,7 +90,7 @@
 
   <header>
     <app-toolbar>
-      <div main-title>EDWIN BEJARANO</div>
+      <div main-title>EDWIN BEJARANO<br> "BEEJ"</div>
     </app-toolbar>
     <app-box threshold="192">
       <ul role="navigation" class="nav">
@@ -96,8 +103,8 @@
       </ul>
     </app-box>
   </header>
-  <div style = "height:100%;max-width:800px; margin:auto;background-color:white;padding:15px;">
-  <iron-pages
+<!--   <div style = "height:100%;max-width:1000px; margin:auto;background-color:white;padding:15px;"> -->
+  <iron-pages 
             selected="[[page]]"
             attr-for-selected="name"
             role="main">
@@ -105,7 +112,7 @@
           <my-about name="about"></my-about>
           <my-projects name="projects"></my-projects>
           <my-contact name="contact"></my-contact>
-  </iron-pages>
+<!--   </iron-pages> -->
 </div>
 
 
@@ -136,6 +143,7 @@
       },
 
       _pageChanged: function(page) {
+        console.log("PAGE CHANGED");
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('my-' + page + '.html');
         this.importHref(resolvedPageUrl, null, this._showPage404, true);
