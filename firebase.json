@@ -3,9 +3,6 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-<<<<<<< HEAD
-    "public": "/"
-=======
     "public": "/",
     "rewrites": [
       {
@@ -13,6 +10,5 @@
         "destination": "/index.html"
       }
     ]
->>>>>>> eb6791a04b91f18a3c343cf04b0b87c82ae63347
   }
 }
